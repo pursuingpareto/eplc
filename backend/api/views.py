@@ -6,14 +6,17 @@
 from api.models import Event
 from api.serializers import EventSerializer
 from rest_framework import generics
+from rest_framework import permissions
 
 class EventList(generics.ListCreateAPIView):
 	queryset = Event.objects.all()
 	serializer_class = EventSerializer
+	permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 class EventDetail(generics.RetrieveUpdateDestroyAPIView):
 	queryset = Event.objects.all()
 	serializer_class = EventSerializer
+	permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 # @csrf_exempt
 # def event_list(request):
