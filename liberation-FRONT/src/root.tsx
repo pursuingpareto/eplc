@@ -1,0 +1,50 @@
+import {
+  Links,
+  Meta,
+  Outlet,
+  Scripts,
+  ScrollRestoration,
+} from "react-router";
+import NavBar from "./components/custom-components/NavBar";
+
+export function Layout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <head>
+        <meta charSet="UTF-8" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0"
+        />
+        <title>My App</title>
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <NavBar/>
+        {children}
+        <ScrollRestoration />
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+
+export default function Root() {
+  return <Outlet />;
+}
+
+
+export function HydrateFallback(){
+  return (
+
+        <p>
+          Loading, please wait...
+        </p>
+      
+  )
+}
